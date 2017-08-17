@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "896751039677",
+    "firebase_url": "https://shoppers-stop-584d7.firebaseio.com",
+    "project_id": "shoppers-stop-584d7",
+    "storage_bucket": "shoppers-stop-584d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896751039677:android:58a39d2712df31cd",
+        "android_client_info": {
+          "package_name": "com.example.sachin.realmdbapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896751039677-on0nh1pkc00n7m4g07l2b3okud9qh97t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTbQXOlq1gR-KuY0DEmumnVhvSnUHDla0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
