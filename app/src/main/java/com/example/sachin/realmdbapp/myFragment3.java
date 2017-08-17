@@ -1,5 +1,6 @@
 package com.example.sachin.realmdbapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.Inflater;
 
 import io.realm.Realm;
@@ -25,6 +31,8 @@ public class myFragment3 extends Fragment {
     TextView t1;
     double total;
     Button btn1;
+    FirebaseDatabase database;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +40,7 @@ public class myFragment3 extends Fragment {
         lv= (ListView) v.findViewById(R.id.myCartList);
         t1= (TextView) v.findViewById(R.id.textView13);
         btn1= (Button) v.findViewById(R.id.button5);
+        database = FirebaseDatabase.getInstance();
         Realm.init(getActivity());
         realm=Realm.getDefaultInstance();
         RealmResults<myCart> test = realm.where(myCart.class).findAll();
@@ -45,13 +54,24 @@ public class myFragment3 extends Fragment {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final RealmResults<myCart> rows = realm.where(myCart.class).findAll();
+
+                DatabaseReference myRef = database.getReference("Orders");
+                Map<String, String> data= new HashMap<String, String>();
+                for (int i=0;i<rows.size();i++)
+                {
+                    data.put(rows.get(i).productName,"Product Name");
+                    int temp=(int)(rows.get(i).price);
+                    data.put(temp+"","Product Name");
+                    myRef.child(rows.get(i).productName).setValue(data);
+                }
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        RealmResults<myCart> rows = realm.where(myCart.class).findAll();
                         rows.deleteAllFromRealm();
                         myListAdapter.notifyDataSetChanged();
                         t1.setText(""+0.0);
+
                     }
                 });
             }

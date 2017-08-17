@@ -84,13 +84,13 @@ public class adminPhase extends AppCompatActivity {
                                 realm.commitTransaction();
                                 Random r = new Random();
                                 int i1 = (r.nextInt(1000));
-                                DatabaseReference myRef = database.getReference(et1.getText().toString()+i1);
+                                DatabaseReference myRef = database.getReference("Phones");
                                 Map<String, String> data= new HashMap<String, String>();
                                 data.put(et1.getText().toString(),"Product Name");
                                 data.put(et2.getText().toString(),"Product Price");
                                 data.put(et3.getText().toString(),"Product Color");
                                 data.put(et4.getText().toString(),"Product Quantity");
-                                myRef.setValue(data);
+                                myRef.child(et1.getText().toString()+i1).setValue(data);
 
                                 Toast.makeText(adminPhase.this, "1 Phone Added", Toast.LENGTH_SHORT).show();
                                 et1.setText("");
@@ -137,13 +137,13 @@ public class adminPhase extends AppCompatActivity {
                                 realm.commitTransaction();
                                 Random r1 = new Random();
                                 int i11 = (r1.nextInt(1000));
-                                DatabaseReference myRef1 = database.getReference(et1.getText().toString()+i11);
+                                DatabaseReference myRef1 = database.getReference("Computers");
                                 Map<String, String> data= new HashMap<String, String>();
                                 data.put(et1.getText().toString(),"Product Name");
                                 data.put(et2.getText().toString(),"Product Price");
                                 data.put(et3.getText().toString(),"Product Color");
                                 data.put(et4.getText().toString(),"Product Quantity");
-                                myRef1.setValue(data);
+                                myRef1.child(et1.getText().toString()+i11).setValue(data);
 
 
 
